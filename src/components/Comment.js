@@ -15,14 +15,14 @@ const ImgUserProfile = styled.img`
   margin-right: 10px;
 `;
 
-const InputKomen = styled.input`
-  width: 100%;
-  height: 30px;
-  resize: none;
-  background: transparent;
-  border-radius: 10px;
-  padding: 5px;
-`;
+// const InputKomen = styled.input`
+//   width: 100%;
+//   height: 30px;
+//   resize: none;
+//   background: transparent;
+//   border-radius: 10px;
+//   padding: 5px;
+// `;
 
 const DivKomentar = styled.div`
   background: #efefef;

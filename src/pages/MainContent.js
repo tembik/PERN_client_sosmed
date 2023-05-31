@@ -19,6 +19,9 @@ import gambarStatus5 from "../images/status1.jpg";
 import styled from "styled-components";
 import { getAllPost, postPost } from "../services/request";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const DivKontainer1 = styled.div`
   display: flex;
   justify-content: space-between;
@@ -98,12 +101,11 @@ const PStory = styled.p`
 
 const MainContent = () => {
   const [daftar, setDaftar] = useState([]);
-  // const [isi, setIsi] = useState("");
-  // const [gambar, setGambar] = useState(null);
   const [postUser, setPostUser] = useState({
     isi: "",
     gambar: null,
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     tampilAll();
@@ -129,23 +131,26 @@ const MainContent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const coba = toast.loading("mohon tunggu....");
+    setLoading(true)
     const formData = new FormData();
     formData.append("isi", postUser.isi);
     formData.append("image", postUser.gambar);
-    postPost(formData).then(() => tampilAll());
+    postPost(formData).then((response) => {
+      tampilAll()
+      toast.update(coba, {
+        render: response.data.message,
+          type: "success",
+          autoClose: 5000,
+          closeButton: true,
+          isLoading: false,
+      })
+      setLoading(false)
+    });
     setPostUser((prev) => {
       return { ...prev, isi: "", gambar: null };
     });
   };
-
-  // const onClickPost = () => {
-  //   const formData = new FormData();
-  //   formData.append("isi", isi);
-  //   formData.append("image", gambar);
-  //   postPost(formData).then(() => tampil());
-  //   setIsi("");
-  //   setGambar(null);
-  // };
 
   return (
     <>
@@ -180,6 +185,7 @@ const MainContent = () => {
             handleChange={handleChange}
             handleGambar={handleGambar}
             handleSubmit={handleSubmit}
+            loading={loading}
           />
           {daftar.map((post) => {
             return <Post post={post} key={post.id} tampil={tampilAll} />;

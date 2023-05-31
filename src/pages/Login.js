@@ -5,6 +5,9 @@ import { logUser } from "../services/request";
 import styled from "styled-components";
 import gambarBack from "../images/background-login.jpg";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const DivKontainer = styled.div`
   display: flex;
   /* justify-content: space-between; */
@@ -71,13 +74,23 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const onSubmitLog = (e) => {
     e.preventDefault();
+    const coba = toast.loading("mohon tunggu....");
+    setLoading(true)
     const userData = { username: username, password: password };
     logUser(userData).then((response) => {
+      setLoading(false)
       if (response.data.message) {
-        alert(response.data.message);
+        toast.update(coba, {
+          render: response.data.message,
+          type: "error",
+          autoClose: 5000,
+          closeButton: true,
+          isLoading: false,
+        });
       } else {
         localStorage.setItem("accessToken", response.data.token);
         dispatch({ type: "LOGIN", payload: response.data });
@@ -104,7 +117,8 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <ButtonLog>Login</ButtonLog>
+          <ButtonLog disabled={loading}>Login</ButtonLog>
+          <ToastContainer />
           <PReg>
             belum punya akun? silahkan{" "}
             <LinkReg to="/register">register</LinkReg>

@@ -10,9 +10,7 @@ import EditContent from "./pages/EditContent";
 import ProfileContent from "./pages/ProfileContent";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-// import { getAllPost, deletePost, authUser } from "./services/request";
 import { AuthContext } from "./context/AuthContext";
-// import jwt_decode from "jwt-decode";
 
 function App() {
   const { user } = useContext(AuthContext);

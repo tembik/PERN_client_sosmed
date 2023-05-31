@@ -36,7 +36,6 @@ const FormKomen = styled.form`
 const Comments = ({ post }) => {
   const [daftar, setDaftar] = useState([]);
   const [isiPost, setIsiPost] = useState("");
-  // const [idPost, setIdiPost] = useState("");
 
   useEffect(() => {
     tampil();

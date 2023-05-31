@@ -52,8 +52,6 @@ const DivLeftEvent = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
-// const DivRightEvent = styled.div``;
-
 const SpanText = styled.span`
   position: absolute;
   bottom: 0;

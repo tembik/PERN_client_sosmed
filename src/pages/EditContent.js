@@ -8,6 +8,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { getOnePost, updatePost } from "../services/request";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const DivKontainer1 = styled.div`
   display: flex;
   justify-content: space-between;
@@ -21,13 +24,11 @@ const DivKontainer2 = styled.div`
 const EditContent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  // const [daftar, setDaftar] = useState([])
-  // const [isi, setIsi] = useState("");
-  // const [gambar, setGambar] = useState(null);
   const [postUser, setPostUser] = useState({
     isi: "",
     gambar: null,
   });
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     tampil();
@@ -57,12 +58,24 @@ const EditContent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const coba = toast.loading("mohon tunggu....");
+    setLoading(true)
     const formData = new FormData();
     formData.append("isi", postUser.isi);
     formData.append("image", postUser.gambar);
     updatePost(id, formData)
       .then(() => navigate(`/post/${id}`))
-      .then(() => tampil());
+      .then((response) => {
+        tampil()
+        toast.update(coba, {
+          render: response.data.message,
+            type: "success",
+            autoClose: 5000,
+            closeButton: true,
+            isLoading: false,
+        })
+        setLoading(false)
+      });
   };
 
   return (
@@ -76,6 +89,7 @@ const EditContent = () => {
             handleChange={handleChange}
             handleGambar={handleGambar}
             handleSubmit={handleSubmit}
+            loading={loading}
           />
         </DivKontainer2>
         <RightSidebar />

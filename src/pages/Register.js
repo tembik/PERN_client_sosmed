@@ -4,6 +4,9 @@ import { regUser } from "../services/request";
 import styled from "styled-components";
 import gambarBack from "../images/background-register.jpg";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const DivKontainer = styled.div`
   display: flex;
   /* justify-content: space-between; */
@@ -68,16 +71,31 @@ const PInfo = styled.p`
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [notifikasi, setNotifikasi] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const onSubmitReg = (e) => {
     e.preventDefault();
+    const coba = toast.loading("mohon tunggu....");
+    setLoading(true)
     const userData = { username: username, password: password };
     regUser(userData).then((response) => {
+      setLoading(false)
       if (response.data.gagal) {
-        setNotifikasi(response.data.gagal);
+        toast.update(coba, {
+          render: response.data.gagal,
+          type: "error",
+          autoClose: 5000,
+          closeButton: true,
+          isLoading: false
+        })
       } else if (response.data.message) {
-        setNotifikasi(response.data.message);
+        toast.update(coba, {
+          render: response.data.message,
+          type: "success",
+          autoClose: 5000,
+          closeButton: true,
+          isLoading: false
+        })
         setUsername("");
         setPassword("");
       }
@@ -89,7 +107,6 @@ const Register = () => {
       <DivKontainer>
         <SpanJudul>Register</SpanJudul>
         <FormReg onSubmit={onSubmitReg}>
-          <h3 style={{ color: "red" }}>{notifikasi}</h3>
           <LabelReg>Username</LabelReg>
           <InputReg
             type="text"
@@ -102,7 +119,8 @@ const Register = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <ButtonReg>Register</ButtonReg>
+          <ButtonReg disabled={loading}>Register</ButtonReg>
+          <ToastContainer />
           <PLog>
             sudah punya akun? silahkan <LinkLog to="/login">login</LinkLog>
           </PLog>

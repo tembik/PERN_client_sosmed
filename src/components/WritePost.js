@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { postPost } from "../services/request";
+// import { postPost } from "../services/request";
 import gambarProfilePic from "../images/profile-pic.png";
 import gambarLiveVIdeo from "../images/live-video.png";
 import gambarPhoto from "../images/photo.png";
@@ -9,6 +9,9 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 import styled from "styled-components";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const DivWritePost = styled.div`
   width: 100%;
@@ -103,7 +106,7 @@ const ImgPreview = styled.img`
   margin-top: 10px;
 `;
 
-const WritePost = ({ postUser, handleChange, handleGambar, handleSubmit }) => {
+const WritePost = ({ postUser, handleChange, handleGambar, handleSubmit, loading }) => {
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
@@ -117,17 +120,6 @@ const WritePost = ({ postUser, handleChange, handleGambar, handleSubmit }) => {
       setPreview(null);
     }
   }, [postUser.gambar]);
-  // const [isi, setIsi] = useState("");
-  // const [gambar, setGambar] = useState(null);
-
-  // const onClickPost = () => {
-  //   const formData = new FormData();
-  //   formData.append("isi", isi);
-  //   formData.append("image", gambar);
-  //   postPost(formData).then(() => tampil());
-  //   setIsi("");
-  //   setGambar(null);
-  // };
 
   const { user } = useContext(AuthContext);
   return (
@@ -170,7 +162,8 @@ const WritePost = ({ postUser, handleChange, handleGambar, handleSubmit }) => {
           <AaddPostLink href="#">
             <ImgAddPostLink src={gambarFeeling} /> Feeling/Activity
           </AaddPostLink>
-          <ButtonPost onClick={handleSubmit}>submit</ButtonPost>
+          <ButtonPost onClick={handleSubmit} disabled={loading}>submit</ButtonPost>
+          <ToastContainer />
         </DivAddPostLink>
       </DivPostInput>
     </DivWritePost>

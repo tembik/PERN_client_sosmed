@@ -10,6 +10,9 @@ import gambarComments from "../images/comments.png";
 import gambarShare from "../images/share.png";
 import styled from "styled-components";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const DivPostKontainer = styled.div`
   width: 100%;
   background: #fff;
@@ -179,22 +182,35 @@ const ButtonKomen = styled.button`
   background: #fff;
 `;
 
-const DivKotakKomentar = styled.div`
-  width: 100%;
-  height: 300px;
-  background: #fff;
-  border: 0px solid black;
-`;
+// const DivKotakKomentar = styled.div`
+//   width: 100%;
+//   height: 300px;
+//   background: #fff;
+//   border: 0px solid black;
+// `;
 
 const Post = ({ post, tampil }) => {
   const [kotak, setKotak] = useState(false);
   const [kotakKomentar, setKotakKomentar] = useState(false);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const hapus = (id) => {
+    const coba = toast.loading("mohon tunggu....");
+    setLoading(true)
     deletePost(id)
-      .then(() => tampil())
+      .then((response) => {
+        tampil()
+        setLoading(false)
+        toast.update(coba, {
+          render: response.data.message,
+          type: "success",
+          autoClose: 5000,
+          closeButton: true,
+          isLoading: false,
+        });
+      })
       .catch((error) => {
         if (error.message) {
           navigate("/");
@@ -235,7 +251,8 @@ const Post = ({ post, tampil }) => {
                 <LinkMenu to={`/edit/${post.id}`}>edit</LinkMenu>
               </DivMenu>
               <DivMenu>
-                <ButtonMenu onClick={() => hapus(post.id)}>hapus</ButtonMenu>
+                <ButtonMenu onClick={() => hapus(post.id)} disabled={loading}>hapus</ButtonMenu>
+                <ToastContainer />
               </DivMenu>
             </DivKotak>
           ) : (

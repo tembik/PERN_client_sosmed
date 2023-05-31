@@ -25,6 +25,9 @@ import gambarMember7 from "../images/member-7.png";
 import gambarMember8 from "../images/member-8.png";
 import gambarMember9 from "../images/member-9.png";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const DivKontainer = styled.div`
   display: flex;
   align-self: flex-start;
@@ -140,6 +143,7 @@ const ProfileInfo = ({ daftar, tampil }) => {
     isi: "",
     gambar: null,
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setPostUser((prev) => {
@@ -157,26 +161,26 @@ const ProfileInfo = ({ daftar, tampil }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const coba = toast.loading("mohon tunggu....");
+    setLoading(true)
     const formData = new FormData();
     formData.append("isi", postUser.isi);
     formData.append("image", postUser.gambar);
-    postPost(formData).then(() => tampil());
+    postPost(formData).then((response) => {
+      tampil()
+      toast.update(coba, {
+        render: response.data.message,
+          type: "success",
+          autoClose: 5000,
+          closeButton: true,
+          isLoading: false,
+      })
+      setLoading(false)
+    });
     setPostUser((prev) => {
       return { ...prev, isi: "", gambar: null };
     });
   };
-
-  // const [isi, setIsi] = useState("");
-  // const [gambar, setGambar] = useState(null);
-
-  // const onClickPost = () => {
-  //   const formData = new FormData();
-  //   formData.append("isi", isi);
-  //   formData.append("gambar", gambar);
-  //   postPost(formData).then(() => tampil());
-  //   setIsi("");
-  //   setGambar(null);
-  // };
 
   return (
     <DivKontainer>
@@ -297,6 +301,7 @@ const ProfileInfo = ({ daftar, tampil }) => {
           handleChange={handleChange}
           handleGambar={handleGambar}
           handleSubmit={handleSubmit}
+          loading={loading}
         />
         {daftar.map((post) => {
           return <Post key={post.id} post={post} tampil={tampil} />;
