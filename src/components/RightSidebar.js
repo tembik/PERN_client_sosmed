@@ -142,21 +142,21 @@ const RightSidebar = () => {
         <DivOnlineUser>
           <ImgOnlineUser src={gambarUser1} />
         </DivOnlineUser>
-        <p>Alison Mina</p>
+        <p>Rina</p>
       </DivOnline>
 
       <DivOnline>
         <DivOnlineUser>
           <ImgOnlineUser src={gambarUser2} />
         </DivOnlineUser>
-        <p>Jackson Aston</p>
+        <p>Rani</p>
       </DivOnline>
 
       <DivOnline>
         <DivOnlineUser>
           <ImgOnlineUser src={gambarUser3} />
         </DivOnlineUser>
-        <p>Samona Rose</p>
+        <p>Hesti</p>
       </DivOnline>
     </DivKontainer>
   );

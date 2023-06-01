@@ -188,7 +188,7 @@ const ProfileInfo = ({ daftar, tampil }) => {
         <DivProIntro>
           <H3ProIntro>Intro</H3ProIntro>
           <PIntroText>
-            Believe in yourself and you can do unbelievable things.
+            Hidup ini indah.
             <ImgIntroText src={gambarFeeling} />
           </PIntroText>
           <HrProIntro />
@@ -250,47 +250,47 @@ const ProfileInfo = ({ daftar, tampil }) => {
           <DivFriendsBox>
             <DivPosition>
               <ImgFriendsBox src={gambarMember1} />
-              <PFriendsBox>Joseph N</PFriendsBox>
+              <PFriendsBox>Udin</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember2} />
-              <PFriendsBox>Nathan N</PFriendsBox>
+              <PFriendsBox>Didik</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember3} />
-              <PFriendsBox>George D</PFriendsBox>
+              <PFriendsBox>Fauzan</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember4} />
-              <PFriendsBox>Francis L</PFriendsBox>
+              <PFriendsBox>Nopan</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember5} />
-              <PFriendsBox>Anthony E</PFriendsBox>
+              <PFriendsBox>Dedi</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember6} />
-              <PFriendsBox>Michael A</PFriendsBox>
+              <PFriendsBox>Andik</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember7} />
-              <PFriendsBox>Edward M</PFriendsBox>
+              <PFriendsBox>Kolis</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember8} />
-              <PFriendsBox>Bradon C</PFriendsBox>
+              <PFriendsBox>Koliq</PFriendsBox>
             </DivPosition>
 
             <DivPosition>
               <ImgFriendsBox src={gambarMember9} />
-              <PFriendsBox>James Doe</PFriendsBox>
+              <PFriendsBox>Heru</PFriendsBox>
             </DivPosition>
           </DivFriendsBox>
         </DivProIntro>

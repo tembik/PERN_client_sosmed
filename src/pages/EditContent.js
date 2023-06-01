@@ -64,7 +64,7 @@ const EditContent = () => {
     formData.append("isi", postUser.isi);
     formData.append("image", postUser.gambar);
     updatePost(id, formData)
-      .then(() => navigate(`/post/${id}`))
+      
       .then((response) => {
         tampil()
         toast.update(coba, {
@@ -75,7 +75,8 @@ const EditContent = () => {
             isLoading: false,
         })
         setLoading(false)
-      });
+      })
+      .then(() => navigate(`/post/${id}`))
   };
 
   return (

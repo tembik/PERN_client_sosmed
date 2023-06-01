@@ -118,7 +118,7 @@ const ProfileContent = () => {
             <DivPDRow>
               <ImgPDRow src={gambarProfile} />
               <div>
-                <H3PDRow>Jack Nicholson</H3PDRow>
+                <H3PDRow>Didik Irawan</H3PDRow>
                 <PProfileDetail>120 Friends - 20 mutual</PProfileDetail>
                 <Imgfriends src={gambarMember1} />
                 <Imgfriends src={gambarMember2} />

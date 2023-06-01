@@ -71,16 +71,16 @@ const LeftSidebar = () => {
       <div>
         <PText>Your Shortcut</PText>
         <ALinks href="#">
-          <ImgShortcutLinks src={gambarShortcut1} /> Web Developer
+          <ImgShortcutLinks src={gambarShortcut1} /> Grup A
         </ALinks>
         <ALinks href="#">
-          <ImgShortcutLinks src={gambarShortcut2} /> Web Design Course
+          <ImgShortcutLinks src={gambarShortcut2} /> Grup B
         </ALinks>
         <ALinks href="#">
-          <ImgShortcutLinks src={gambarShortcut3} /> Full Stack Development
+          <ImgShortcutLinks src={gambarShortcut3} /> Grup C
         </ALinks>
         <ALinks href="#">
-          <ImgShortcutLinks src={gambarShortcut4} /> Website Experts
+          <ImgShortcutLinks src={gambarShortcut4} /> Grup D
         </ALinks>
       </div>
     </DivKontainer>

@@ -130,7 +130,7 @@ const Settings = () => {
         <DivUserProfile>
           <ImgUserProfile src={gambarFeedback} />
           <div>
-            <PText>Give Feedback</PText>
+            <PText>Tombol</PText>
             <ALink href="#">Help us improve the new design</ALink>
           </div>
         </DivUserProfile>
@@ -139,21 +139,21 @@ const Settings = () => {
         <DivSettingLink>
           <ImgSettingIcon src={gambarSetting} />
           <ASettingLink href="#">
-            Settings & Privacy <ImgArrow src={gambarArrow} />
+            Settings Profil(Belum jadi) <ImgArrow src={gambarArrow} />
           </ASettingLink>
         </DivSettingLink>
 
         <DivSettingLink>
           <ImgSettingIcon src={gambarHelp} />
           <ASettingLink href="#">
-            Help & Support <ImgArrow src={gambarArrow} />
+            Tombol A <ImgArrow src={gambarArrow} />
           </ASettingLink>
         </DivSettingLink>
 
         <DivSettingLink>
           <ImgSettingIcon src={gambarDisplay} />
           <ASettingLink href="#">
-            Display & Accessibility <ImgArrow src={gambarArrow} />
+          Tombol B <ImgArrow src={gambarArrow} />
           </ASettingLink>
         </DivSettingLink>
 

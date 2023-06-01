@@ -165,19 +165,19 @@ const MainContent = () => {
             </DivStory1>
             <DivStory2>
               <ImgStory src={gambarMember1} />
-              <PStory>Alison</PStory>
+              <PStory>Rina</PStory>
             </DivStory2>
             <DivStory3>
               <ImgStory src={gambarMember2} />
-              <PStory>Jackson</PStory>
+              <PStory>Rani</PStory>
             </DivStory3>
             <DivStory4>
               <ImgStory src={gambarMember3} />
-              <PStory>Samona</PStory>
+              <PStory>Maria</PStory>
             </DivStory4>
             <DivStory5>
               <ImgStory src={gambarMember4} />
-              <PStory>John Doe</PStory>
+              <PStory>Hanina</PStory>
             </DivStory5>
           </DivStoryGallery>
           <WritePost
